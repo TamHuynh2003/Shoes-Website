@@ -22,13 +22,13 @@ class ProductImagesSeeder extends Seeder
             5 => ['images/products/con1.png', 'images/products/con2.png', 'images/products/con3.png', 'images/products/con4.png', 'images/products/con5.png', 'images/products/con6.png', 'images/products/con7.png', 'images/products/con8.png', 'images/products/con9.png', 'images/products/con10.png'],
         ];
 
-        for ($i = 1; $i <= 32; $i++) {
+        for ($i = 1; $i <= 20; $i++) {
             $products = Products::find($i);
             $categoryId = $products->categories_id;
 
             if (isset($categoryImages[$categoryId])) {
                 $images = $categoryImages[$categoryId];
-                $randomCount = rand(3, 5);
+                $randomCount = rand(1, 3);
 
                 for ($j = 1; $j <= $randomCount; $j++) {
                     $randomImageIndex = array_rand($images);

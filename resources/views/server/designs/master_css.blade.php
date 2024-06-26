@@ -15,8 +15,8 @@
     <title>MT Shoes Website</title>
 
     <!--CSRF Token-->
-    {{--
-    <meta name="csrfToken" content="{{ csrf_token() }}"> --}}
+
+    <meta name="csrfToken" content="{{ csrf_token() }}">
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('admin_template/assets/plugins/bootstrap/css/bootstrap.min.css')}}"

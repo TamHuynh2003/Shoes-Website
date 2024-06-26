@@ -5,7 +5,7 @@
     <td><span>{{ $admins->address }}</span></td>
     <td><span>{{ $admins->phone_number }}</span></td>
     <td>
-        <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+        <ul class=" users-list m-0 avatar-group d-flex align-items-center">
             <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
                 class="avatar avatar-xs pull-up" title="" data-bs-original-title="{{ $admins->fullname }}">
                 <img src="{{ asset($admins->avatar) }}" alt="Avatar" class="rounded-circle">

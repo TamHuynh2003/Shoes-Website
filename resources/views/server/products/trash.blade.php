@@ -45,7 +45,7 @@
                                 <td><span>{{ $products->selling_price }}</span></td>
                                 <td>
                                     @if(!empty($productImage))
-                                    <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                    <ul class=" m-0 avatar-group d-flex align-items-center">
                                         @foreach($productImage as $images)
                                         @if($images->products_id == $products->id)
                                         <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
@@ -62,10 +62,10 @@
                                 </td>
                                 <td>
                                     @if(!empty($products->rating))
-                                    <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                    <ul class=" users-list m-0 avatar-group d-flex align-items-center">
                                         @for($i=1;$i<=$products->rating;$i++)
                                             <li data-bs-toggle="tooltip" class="avatar avatar-xs pull-up">
-                                                <i class='ion ion-ios7-star' style=" color:yellow"></i>
+                                                <i class='ion ion-ios7-star' style=" color:rgb(244, 244, 14)"></i>
                                             </li>
                                             @endfor
                                     </ul>

@@ -27,7 +27,6 @@ class StoreProductsRequest extends FormRequest
 
             'purchase_price' => 'required|numeric',
             'selling_price' => 'required|numeric',
-
         ];
     }
 

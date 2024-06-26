@@ -5,28 +5,28 @@
     <td><span>{{ $products->purchase_price }}</span></td>
     <td><span>{{ $products->selling_price }}</span></td>
     <td>
-        @if(!empty($productImage))
-        <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+        @if($productImage->where('products_id', $products->id)->count() > 0)
+        <ul class="users-list m-0 avatar-group d-flex align-items-center">
             @foreach($productImage as $images)
             @if($images->products_id == $products->id)
             <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                class="avatar avatar-xs pull-up" title="" data-bs-original-title="{{$products->name}}">
-                <img src="{{asset($images->url)}}" alt="Avatar" class="rounded-circle">
+                class="avatar avatar-xs pull-up" title="{{ $products->name }}">
+                <img src="{{ asset($images->url) }}" alt="Avatar" class="rounded-circle">
             </li>
             @endif
             @endforeach
         </ul>
         @else
-        <p>Không có ảnh cho sản phẩm này</p>
+        <p>Sản phẩm này không có ảnh</p>
         @endif
     </td>
     <td>
         @if(!empty($products->rating))
-        <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-            @for($i=1;$i<=$products->rating;$i++)
+        <ul class=" users-list m-0 avatar-group d-flex align-items-center">
+            @for($i=1; $i<=$products->rating; $i++)
                 <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
                     class="avatar avatar-xs pull-up" title="">
-                    <i class='ion ion-ios7-star' style=" color:yellow"></i>
+                    <i class='ion ion-ios7-star' style="color:rgb(244, 244, 14)"></i>
                 </li>
                 @endfor
         </ul>
@@ -37,23 +37,19 @@
     </td>
     <td>
         <div class="d-flex align-items-stretch">
-            <!--Edit-->
             <a class="btn btn-sm btn-outline-primary border me-2" data-bs-toggle="tooltip"
-                href="{{ route('products.update', ['id' => $products->id]) }}" data-bs-original-title="Sửa">
+                href="{{ route('products.edit', ['id' => $products->id]) }}" data-bs-original-title="Sửa">
                 <i class="fe fe-edit-2"></i>
             </a>
-            <!--Details-->
-            <a class=" btn btn-sm btn-outline-info border me-2" data-bs-toggle="tooltip"
-                href="{{route('products.show',['id' => $products->id])}}" data-bs-original-title=" Chi Tiết">
+            <a class="btn btn-sm btn-outline-info border me-2" data-bs-toggle="tooltip"
+                href="{{ route('products.show', ['id' => $products->id]) }}" data-bs-original-title="Chi Tiết">
                 <i class="fe fe-info"></i>
             </a>
-            <!--Delete-->
             <a data-name="{{ $products->name }}" class="btn btn-sm btn-outline-secondary border me-2 delete-link"
                 data-bs-toggle="tooltip" data-route="{{ route('products.delete', ['id' => $products->id]) }}"
-                data-bs-original-title=" Xóa">
-                <i class="fe fe-trash-2 "></i>
+                data-bs-original-title="Xóa">
+                <i class="fe fe-trash-2"></i>
             </a>
-
         </div>
     </td>
 </tr>
@@ -83,4 +79,5 @@
         });
     });
 </script>
+
 @endforeach

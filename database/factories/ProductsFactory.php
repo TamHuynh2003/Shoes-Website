@@ -151,11 +151,32 @@ class ProductsFactory extends Factory
         $categoryId = $categoryIdProviderIdMap[$brand];
         $providerId = $categoryIdProviderIdMap[$brand];
 
+        $purchasePrices = [350000, 400000, 500000, 600000, 750000, 800000, 1000000, 1250000, 1500000, 1750000, 1850000, 1900000];
+        $sellingPrices = [550000, 600000, 650000, 700000, 850000, 950000, 1100000, 1200000, 1450000, 1700000, 1850000, 1950000, 2000000];
+
+        do {
+            $purchasePrice = $this->faker->randomElement($purchasePrices);
+            $possibleSellingPrices = array_filter($sellingPrices, function ($price) use ($purchasePrice) {
+                return $price > $purchasePrice + 300000;
+            });
+        } while (empty($possibleSellingPrices));
+
+        $sellingPrice = $this->faker->randomElement($possibleSellingPrices);
+
+
         return [
             'name' => $productDetails['name'],
             'descriptions' => $productDetails['descriptions'],
-            'purchase_price' => $this->faker->numberBetween(300000, 1000000),
-            'selling_price' => $this->faker->numberBetween(400000, 4000000) + 200000,
+
+            // 'purchase_price' => $this->faker->numberBetween(300000, 1000000),
+            // 'selling_price' => $this->faker->numberBetween(400000, 4000000) + 200000,
+
+            // 'purchase_price' => $this->faker->randomElement($purchasePrices),
+            // 'selling_price' => $this->faker->randomElement($sellingPrices),
+
+            'purchase_price' => $purchasePrice,
+            'selling_price' => $sellingPrice,
+
             'rating' => $this->faker->numberBetween(3, 5),
             'categories_id' => $categoryId,
             'providers_id' => $providerId,

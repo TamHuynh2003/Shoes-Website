@@ -18,13 +18,14 @@
                 <div>
                     <a href="{{route('products.create')}}" class="btn btn-primary me-2">Thêm</a>
                     <a href="{{route('products.trash')}}" class="btn btn-primary me-2">Trùng Rác</a>
+
                     <a href="" class="btn btn-primary me-2">Xuất PDF</a>
                 </div>
 
                 <div class="input-group input-group-merge w-75">
                     <span class="input-group-text" id="basic-addon-search31"><i class="ti-search"></i></span>
-                    <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm..."
-                        aria-label="Search..." aria-label="Search..." aria-describedby="basic-addon-search31">
+                    <input type="text" id="search" class="form-control" placeholder="Tìm kiếm..." aria-label="Search..."
+                        aria-label="Search..." aria-describedby="basic-addon-search31">
                 </div>
             </div>
             <div class="card-header border-bottom">
@@ -49,12 +50,11 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="data-table" class="table text-nowrap mb-0 table-bordered">
-                        <thead class="table-head" id="listProducts">
+                    <table id="listProducts" class="table text-nowrap mb-0 table-bordered">
+                        <thead class="table-head">
                             <tr>
                                 <th>STT</th>
                                 <th>Giày </th>
-                                {{-- <th>Số Lượng</th> --}}
                                 <th>Giá Nhập</th>
                                 <th>Giá Bán</th>
                                 <th>Ảnh Giày</th>
@@ -73,20 +73,21 @@
     </div>
 </div>
 
-<script src="{{asset('assets/jquery-3.7.1.min.js')}}"></script>
+<script src="{{ asset('admin_template/assets/jquery-3.7.1.min.js') }}"></script>
 <script>
     var $j = jQuery.noConflict();
 
     $j(document).ready(function() {
-        $j('#searchInput').on('keyup', function(event) {
+        $j('#search').on('keyup', function(event) {
             if (event.key === 'Enter') {
-                search();
+                searchProducts();
             }
         });
     });
 
-    function search() {
-        let keyword = $j('#searchInput').val();
+    function searchProducts() {
+        let keyword = $j('#search').val();
+
         $j.ajax({
             url: "{{ route('products.search') }}",
             type: 'POST',
@@ -95,7 +96,7 @@
                 _token: '{{ csrf_token() }}'
             },
             success: function(data) {
-                $('#listProducts tbody').html(data);
+                $j('#listProducts tbody').html(data);
             },
             error: function(xhr) {
                 console.error(xhr.responseText);

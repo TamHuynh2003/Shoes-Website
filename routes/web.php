@@ -109,6 +109,30 @@ Route::prefix('/admin')->group(function () {
 
         // Route::resource('/users', UsersController::class);
 
+        //Products
+
+        Route::prefix('/quanlysanpham')->name('products.')->group(function () {
+            Route::get('/', [ProductsController::class, 'index'])->name('index');
+
+            Route::get('/thungrac', [ProductsController::class, 'trash'])->name('trash');
+            Route::post('/search', [ProductsController::class, 'search'])->name('search');
+
+            Route::get('/themmoi', [ProductsController::class, 'create'])->name('create');
+            Route::post('/themmoi', [ProductsController::class, 'store'])->name('store');
+
+            Route::get('/chitiet/{id}', [ProductsController::class, 'show'])->name('show');
+            Route::post('/quantity/{id}', [ProductsController::class, 'quantity'])->name('quantity');
+
+            Route::get('/capnhat/{id}', [ProductsController::class, 'edit'])->name('edit');
+            Route::post('/capnhat/{id}', [ProductsController::class, 'update'])->name('update');
+
+            Route::get('/delete/{id}', [ProductsController::class, 'destroy'])->name('delete');
+        });
+
+        //endProducts
+
+        // Route::resource('/products', ProductsController::class);
+
         //Providers
 
         Route::prefix('/quanlynhacungcap')->name('providers.')->group(function () {
@@ -153,28 +177,6 @@ Route::prefix('/admin')->group(function () {
 
         //endOrders
 
-        //Products
-
-        Route::prefix('/quanlysanpham')->name('products.')->group(function () {
-
-            Route::get('/', [ProductsController::class, 'index'])->name('index');
-
-            Route::get('/thungrac', [ProductsController::class, 'trash'])->name('trash');
-            Route::post('/search', [ProductsController::class, 'search'])->name('search');
-
-            Route::get('/chitiet/{id}', [ProductsController::class, 'show'])->name('show');
-
-            Route::get('/themmoi', [ProductsController::class, 'create'])->name('create');
-            Route::post('/themmoi', [ProductsController::class, 'store'])->name('store');
-
-            Route::get('/capnhat/{id}', [ProductsController::class, 'edit'])->name('edit');
-            Route::post('/capnhat/{id}', [ProductsController::class, 'update'])->name('update');
-
-            Route::get('/delete/{id}', [ProductsController::class, 'destroy'])->name('delete');
-        });
-
-        //endProducts
-
         //Comments
 
         Route::prefix('/quanlydanhgia')->name('comments.')->group(function () {
@@ -184,6 +186,8 @@ Route::prefix('/admin')->group(function () {
         });
 
         //endComments
+
+        // Route::resource('/comments', CommentsController::class);
 
         //Discounts
 
