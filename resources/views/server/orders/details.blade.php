@@ -5,7 +5,7 @@
 <div class="page-header">
     <div class="ms-auto pageheader-btn">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Hóa Đơn Nhập Hàng</a></li>
+            <li class="breadcrumb-item"><a href="#"> Đơn Hàng</a></li>
             <li class="breadcrumb-item active" aria-current="page">Chi Tiết</li>
         </ol>
     </div>
@@ -13,7 +13,7 @@
 
 <div class="card-header border-bottom">
     <div>
-        <a href=" {{route('purchases.index')}}" class="btn btn-primary me-2">Trở Lại</a>
+        <a href=" {{route('orders.index')}}" class="btn btn-primary me-2">Trở Lại</a>
     </div>
 </div>
 
@@ -23,24 +23,26 @@
             <tr>
                 <th>STT</th>
                 <th>Giày</th>
-                <th>Giá Nhập</th>
+                <th>Giá</th>
                 <th>Số Lượng</th>
                 <th>Màu Sắc</th>
                 <th>Kích Cỡ</th>
             </tr>
         </thead>
         <tbody class="table-body">
-            @foreach ($listPurchaseDetails as $purchaseDetails)
+            @foreach ($listOrderDetails as $orderDetails)
             <tr>
-                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $loop->iteration }}</strong>
+                <td>
+                    <i class="fab fa-angular fa-lg text-danger me-3"></i>
+                    <strong>{{ $loop->iteration }}</strong>
                 </td>
 
-                <td>{{ $purchaseDetails->products->name }}</td>
-                <td>{{ $purchaseDetails->purchase_price }}</td>
+                <td>{{ $orderDetails->products->name }}</td>
+                <td>{{ $orderDetails->selling_price }}</td>
 
-                <td>{{ $purchaseDetails->quantity }}</td>
-                <td>{{ $purchaseDetails->colors->name }}</td>
-                <td>{{ $purchaseDetails->sizes->name }}</td>
+                <td>{{ $orderDetails->quantity }}</td>
+                <td>{{ $orderDetails->colors->name }}</td>
+                <td>{{ $orderDetails->sizes->name }}</td>
 
             </tr>
             @endforeach

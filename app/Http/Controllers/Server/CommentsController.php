@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Server;
 
+use App\Models\Users;
 use App\Models\Comments;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,7 +14,35 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+        $listComments = Comments::all()->where('is_deleted', 1);
+
+        return view('server.comments.index', compact('listComments'));
+    }
+
+    public function trash()
+    {
+        $listComments = Comments::all()->where('is_deleted', 0);
+
+        return view('server.comments.trash', compact('listComments'));
+    }
+
+    public function search(Request $req)
+    {
+        $keyword = $req->input('data');
+
+        if (empty($keyword)) {
+            $listComments = Comments::all();
+        } else {
+            $user_id = Users::where('fullname', 'like', "%$keyword%")->pluck('id')->toArray();
+
+            if (!empty($user_id)) {
+                $listComments = Comments::whereIn('users_id', $user_id)->get();
+            } else {
+                $listComments = [];
+            }
+        }
+
+        return view('server.comments.search', compact('listComments'));
     }
 
     /**
@@ -59,8 +88,13 @@ class CommentsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Comments $comments)
+    public function destroy($id)
     {
-        //
+        $comments = Comments::find($id);
+
+        $comments->is_deleted = 0;
+        $comments->save();
+
+        return redirect()->route('comments.index')->with('alert', 'Xóa đánh giá thành công');
     }
 }

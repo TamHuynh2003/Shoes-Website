@@ -12,9 +12,9 @@ class ProductDetailsSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i <= 20; $i++) {
-            for ($color = 1; $color <= 7; $color++) {
-                for ($size = 1; $size <= 7; $size++) {
+        for ($i = 1; $i <= 8; $i++) {
+            for ($color = 1; $color <= 4; $color++) {
+                for ($size = 1; $size <= 4; $size++) {
                     ProductDetails::create([
                         'quantity' => rand(15, 85),
                         'products_id' => $i,

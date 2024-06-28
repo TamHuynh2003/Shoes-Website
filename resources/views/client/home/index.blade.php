@@ -742,4 +742,26 @@
     </div>
 </section>
 
+{{-- <div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <div class="btn-social">
+        <ul class="ft-menu-cl">
+            <li class="menu-click"><i class="fa fa-comments" aria-hidden="true"></i>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        $(function() {
+                $('.menu-click').click(function() {
+                    $(this).toggleClass('open');
+                });
+            });
+    </script>
+</div> --}}
+
+{{--Chat Box AI--}}
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger intent="WELCOME" chat-title="Coza" agent-id="08c442ce-32e1-4edf-a57e-292f1805eb5e" language-code="en">
+</df-messenger>
+
 @endsection

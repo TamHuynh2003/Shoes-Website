@@ -180,7 +180,8 @@ class ProductsFactory extends Factory
             'rating' => $this->faker->numberBetween(3, 5),
             'categories_id' => $categoryId,
             'providers_id' => $providerId,
-            'is_deleted' => $this->faker->numberBetween(0, 1),
+            'is_deleted' => 1,
+            // 'is_deleted' => $this->faker->numberBetween(0, 1),
         ];
     }
 }

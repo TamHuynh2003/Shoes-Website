@@ -15,10 +15,10 @@ return new class extends Migration
 
             $table->id();
 
-            $table->dateTime('purchase_date');
-            $table->decimal('total_price');
+            $table->date('purchase_date');
+            $table->double('total_price');
 
-            $table->boolean('is_deleted')->default(true);
+            // $table->boolean('is_deleted')->default(true);
 
             $table->timestamps();
         });

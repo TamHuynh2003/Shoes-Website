@@ -16,9 +16,9 @@ return new class extends Migration
             $table->id();
 
             $table->integer('quantity');
-            $table->decimal('selling_price');
+            $table->float('selling_price');
 
-            $table->boolean('is_deleted')->default(true);
+            // $table->boolean('is_deleted')->default(true);
 
             $table->timestamps();
         });

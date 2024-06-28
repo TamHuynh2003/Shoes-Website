@@ -20,4 +20,9 @@ class Purchases extends Model
     {
         return $this->belongsTo(Admins::class);
     }
+
+    public function status()
+    {
+        return $this->belongsTo(OrderStates::class);
+    }
 }

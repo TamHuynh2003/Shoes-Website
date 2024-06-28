@@ -15,14 +15,14 @@ return new class extends Migration
 
             $table->id();
 
-            $table->dateTime('order_date');
-            $table->decimal('total_price');
+            $table->date('order_date');
+            $table->double('total_price');
 
             $table->string('address');
             $table->string('phone_number');
             $table->decimal('shipping_cost');
 
-            $table->boolean('is_deleted')->default(true);
+            // $table->boolean('is_deleted')->default(true);
 
             $table->timestamps();
         });

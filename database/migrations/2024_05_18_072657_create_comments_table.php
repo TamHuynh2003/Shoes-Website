@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('content');
-            $table->decimal('ratings');
+            $table->double('rating');
 
             $table->string('comment_images');
 

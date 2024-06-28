@@ -22,7 +22,7 @@
                     <a href="" class="btn btn-primary me-2">Xuất PDF</a>
                 </div>
 
-                <div class="input-group input-group-merge w-75">
+                <div class="input-group input-group-merge w-50">
                     <span class="input-group-text" id="basic-addon-search31"><i class="ti-search"></i></span>
                     <input type="text" id="search" class="form-control" placeholder="Tìm kiếm..." aria-label="Search..."
                         aria-label="Search..." aria-describedby="basic-addon-search31">
@@ -76,33 +76,30 @@
 <script src="{{ asset('admin_template/assets/jquery-3.7.1.min.js') }}"></script>
 <script>
     var $j = jQuery.noConflict();
-
-    $j(document).ready(function() {
-        $j('#search').on('keyup', function(event) {
-            if (event.key === 'Enter') {
-                searchProducts();
-            }
+        $j(document).ready(function() {
+            $j('#search').on('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    searchProducts();
+                }
+            });
         });
-    });
 
-    function searchProducts() {
-        let keyword = $j('#search').val();
-
-        $j.ajax({
-            url: "{{ route('products.search') }}",
-            type: 'POST',
-            data: {
-                data: keyword,
-                _token: '{{ csrf_token() }}'
-            },
-            success: function(data) {
-                $j('#listProducts tbody').html(data);
-            },
-            error: function(xhr) {
-                console.error(xhr.responseText);
-            }
-        });
-    }
+        function searchProducts() {
+            let keyword = $j('#search').val();
+            $j.ajax({
+                url: "{{ route('products.search') }}",
+                type: 'POST',
+                data: {
+                    data: keyword,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(data) {
+                    $j('#listProducts tbody').html(data);
+                },
+                error: function(xhr) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
 </script>
-
 @endsection

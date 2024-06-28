@@ -11,9 +11,9 @@ class Comments extends Model
 
     protected $table = 'comments';
 
-    public function customers()
+    public function users()
     {
-        return $this->belongsTo(Customers::class);
+        return $this->belongsTo(Users::class);
     }
 
     public function products()

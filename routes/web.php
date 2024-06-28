@@ -3,26 +3,29 @@
 use Illuminate\Support\Facades\Route;
 
 //Users
-use App\Http\Controllers\Client\HomeController;
-use App\Http\Controllers\Client\RegisterController;
-use App\Http\Controllers\Client\LoginController;
-use App\Http\Controllers\Client\CartController;
-use App\Http\Controllers\Client\WishlistController;
-use App\Http\Controllers\Client\CheckoutController;
 use App\Http\Controllers\Client\BlogController;
-use App\Http\Controllers\Client\ContactController;
+use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\AboutController;
-use App\Http\Controllers\Client\ProductController;
-
-//Admins 
+use App\Http\Controllers\Client\LoginController;
 use App\Http\Controllers\Server\SizesController;
 use App\Http\Controllers\Server\UsersController;
 use App\Http\Controllers\Server\AdminsController;
 use App\Http\Controllers\Server\ColorsController;
+use App\Http\Controllers\Server\OrdersController;
+
+//Admins 
+use App\Http\Controllers\Client\ContactController;
+use App\Http\Controllers\Client\ProductController;
+use App\Http\Controllers\Client\CheckoutController;
+use App\Http\Controllers\Client\RegisterController;
+use App\Http\Controllers\Client\WishlistController;
+use App\Http\Controllers\Server\CommentsController;
 use App\Http\Controllers\Server\ProductsController;
 use App\Http\Controllers\Server\DashBoardController;
 use App\Http\Controllers\Server\DiscountsController;
 use App\Http\Controllers\Server\ProvidersController;
+use App\Http\Controllers\Server\PurchasesController;
 use App\Http\Controllers\Server\CategoriesController;
 use App\Http\Controllers\Server\SlideShowsController;
 use App\Http\Controllers\Server\PaymentMethodsController;
@@ -159,30 +162,56 @@ Route::prefix('/admin')->group(function () {
 
         //Purchase
 
-        Route::prefix('/quanlyhoadonnhap')->name('purchase.')->group(function () {
+        Route::prefix('/quanlyhoadonnhap')->name('purchases.')->group(function () {
 
-            //
+            Route::get('/', [PurchasesController::class, 'index'])->name('index');
 
+            Route::get('/thungrac', [PurchasesController::class, 'trash'])->name('trash');
+            Route::post('/search', [PurchasesController::class, 'search'])->name('search');
+
+            Route::get('/chitiet/{id}', [PurchasesController::class, 'show'])->name('show');
+            Route::get('/verify/{id}', [PurchasesController::class, 'verify'])->name('verify');
+
+            Route::get('/themmoi', [PurchasesController::class, 'create'])->name('create');
+            Route::post('/themmoi', [PurchasesController::class, 'store'])->name('store');
+
+            Route::get('/delete/{id}', [PurchasesController::class, 'destroy'])->name('delete');
         });
 
         //endPurchase
+
+        // Route::resource('/purchases', PurchasesController::class);
 
         //Orders
 
         Route::prefix('/quanlyhoadonban')->name('orders.')->group(function () {
 
-            //
+            Route::get('/', [OrdersController::class, 'index'])->name('index');
+            Route::get('/thungrac', [OrdersController::class, 'trash'])->name('trash');
 
+            Route::post('/search', [OrdersController::class, 'search'])->name('search');
+
+            Route::get('/chitiet/{id}', [OrdersController::class, 'show'])->name('show');
+
+            Route::get('/delete/{id}', [OrdersController::class, 'destroy'])->name('delete');
+
+            Route::get('/status/{id}/{status}', [OrdersController::class, 'changeStatus'])->name('status');
         });
 
         //endOrders
+
+        // Route::resource('/orders', OrdersController::class);
 
         //Comments
 
         Route::prefix('/quanlydanhgia')->name('comments.')->group(function () {
 
-            //
+            Route::get('/', [CommentsController::class, 'index'])->name('index');
+            Route::get('/thungrac', [CommentsController::class, 'trash'])->name('trash');
 
+            Route::post('/search', [CommentsController::class, 'search'])->name('search');
+
+            Route::get('/delete/{id}', [CommentsController::class, 'destroy'])->name('delete');
         });
 
         //endComments

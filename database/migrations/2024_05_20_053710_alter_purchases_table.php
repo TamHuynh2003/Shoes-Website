@@ -22,6 +22,11 @@ return new class extends Migration
                 table: 'admins',
                 indexName: 'purchases_admins_id'
             );
+
+            $table->foreignId('status_id')->default(1)->after('admins_id')->constrained(
+                table: 'order_states',
+                indexName: 'purchases_status_id'
+            );
         });
     }
 
@@ -32,9 +37,9 @@ return new class extends Migration
     {
         Schema::table('purchases', function (Blueprint $table) {
 
-            $table->dropForeign(['providers_id', 'admins_id']);
+            $table->dropForeign(['providers_id', 'admins_id', 'status_id']);
 
-            $table->dropColumn(['providers_id', 'admins_id']);
+            $table->dropColumn(['providers_id', 'admins_id', 'status_id']);
         });
     }
 };

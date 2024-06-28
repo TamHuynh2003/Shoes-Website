@@ -13,7 +13,7 @@
                         class="header-brand-img light-logo1" alt="logo">
                 </a>
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">MT Website</span>
+            <span class="app-brand-text demo menu-text fw-bolder ms-2">MT Shoes</span>
         </div>
         <div class="main-sidemenu">
             <div class="slide-left disabled" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191"
@@ -56,19 +56,19 @@
                     </a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('purchases.index')}}">
                         <i class="side-menu__icon fa fa-cart-plus"></i>
                         <span class="side-menu__label">Hóa Đơn Nhập Hàng</span>
                     </a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('orders.index')}}">
                         <i class="side-menu__icon fa fa-cart-arrow-down"></i>
                         <span class="side-menu__label">Hóa Đơn Bán Hàng</span>
                     </a>
                 </li>
                 <li class="slide">
-                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="{{route('comments.index')}}">
                         <i class="side-menu__icon fa fa-comments"></i>
                         <span class="side-menu__label">Đánh Giá Sản Phẩm</span>
                     </a>

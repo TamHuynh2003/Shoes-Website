@@ -11,9 +11,9 @@ class Orders extends Model
 
     protected $table = 'orders';
 
-    public function customers()
+    public function users()
     {
-        return $this->belongsTo(Customers::class);
+        return $this->belongsTo(Users::class);
     }
 
     public function admins()
@@ -31,7 +31,7 @@ class Orders extends Model
         return $this->belongsTo(PaymentMethods::class);
     }
 
-    public function order_states()
+    public function status()
     {
         return $this->belongsTo(OrderStates::class);
     }
