@@ -27,11 +27,50 @@
                         <form class="login100-form validate-form" action="" method="POST">
                             @csrf
                             <span class="login100-form-title">
-                                Đăng Nhập
+                                Đăng Ký
                             </span>
+
                             <div class="wrap-input100 validate-input">
-                                <input type="text" name="username" value="{{ old('username') }}" class="input100"
-                                    placeholder="Tài khoản" autofocus required>
+                                <input class="input100" type="text" name="fullname" value="{{ old('fullname') }}"
+                                    placeholder="Họ Và Tên " autofocus required>
+
+                                <span class="focus-input100"></span>
+
+                                <span class="symbol-input100">
+                                    <i class="zmdi zmdi-library" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            <div class="form-text">
+                                <font style="vertical-align: inherit;">
+                                    @error('fullname')
+                                    <font style="vertical-align: inherit;color:red">{{ $message }}</font>
+                                    @enderror
+                                </font>
+                            </div>
+
+                            <div class="wrap-input100 validate-input">
+                                <input class="input100" type="text" name="email" value="{{ old('email') }}"
+                                    placeholder="Email" autofocus required>
+
+                                <span class="focus-input100"></span>
+
+                                <span class="symbol-input100">
+                                    <i class="zmdi zmdi-email" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            <div class="form-text">
+                                <font style="vertical-align: inherit;">
+                                    @error('email')
+                                    <font style="vertical-align: inherit;color:red">{{ $message }}</font>
+                                    @enderror
+                                </font>
+                            </div>
+
+                            <div class="wrap-input100 validate-input">
+                                <input class="input100" type="text" name="username" value="{{ old('username') }}"
+                                    placeholder="Tên Tài Khoản " autofocus required>
 
                                 <span class="focus-input100"></span>
 
@@ -49,8 +88,8 @@
                             </div>
 
                             <div class="wrap-input100 validate-input">
-                                <input type="password" name="password" value="{{ old('password') }}" class="input100"
-                                    placeholder="Mật khẩu" autofocus required>
+                                <input class="input100" type="password" name="password" value="{{ old('password') }}"
+                                    placeholder="Mật Khẩu" autofocus required>
 
                                 <span class="focus-input100"></span>
 
@@ -67,25 +106,39 @@
                                 </font>
                             </div>
 
-                            <div class="text-end pt-1">
-                                <p class="mb-0"><a href="" class="text-primary ms-1">Quên mật khẩu?</a></p>
+                            <div class="wrap-input100 validate-input">
+                                <input class="input100" type="password" name="confirm_password"
+                                    value="{{ old('confirm_password') }}" placeholder="Xác Nhận Lại Mật Khẩu" autofocus
+                                    required>
+
+                                <span class="focus-input100"></span>
+
+                                <span class="symbol-input100">
+                                    <i class="zmdi zmdi-lock" aria-hidden="true"></i>
+                                </span>
+                            </div>
+
+                            <div class="form-text">
+                                <font style="vertical-align: inherit;">
+                                    @error('confirm_password')
+                                    <font style="vertical-align: inherit;color:red">{{ $message }}</font>
+                                    @enderror
+                                </font>
                             </div>
 
                             <div class="container-login100-form-btn">
                                 <button type="submit" class="login100-form-btn btn-primary">
-                                    Đăng nhập
+                                    Tạo Tài Khoản
                                 </button>
                             </div>
-
                             <div class="text-center pt-3">
-                                <p class="text-dark mb-0">Chưa có tài khoản?
-                                    <a href="{{route('register')}}" class="text-primary ms-1">
-                                        Đăng ký tài khoản
-                                    </a>
+                                <p class="text-dark mb-0">Đã Có Tài Khoản?<a href="{{route('login')}}"
+                                        class="text-primary ms-1">Đăng Nhập</a>
                                 </p>
                             </div>
                         </form>
                     </div>
+
                     <div class="card-footer">
                         <div class="d-flex justify-content-center my-3">
                             <a href="" class="social-login  text-center me-4">

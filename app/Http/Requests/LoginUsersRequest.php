@@ -22,7 +22,7 @@ class LoginUsersRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email|max:255|min:5',
+            'email' => 'required|email|exists:users|max:255|min:5',
             'password' => 'required|min:6'
         ];
     }
@@ -41,8 +41,8 @@ class LoginUsersRequest extends FormRequest
     public function attributes()
     {
         return [
-            'email' => 'Email của bạn ',
-            'password' => 'Mật khẩu',
+            'email' => 'email của bạn ',
+            'password' => 'mật khẩu',
         ];
     }
 }

@@ -7,13 +7,12 @@ use App\Models\Admins;
 use App\Models\Genders;
 use App\Models\UserStates;
 use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
 use App\Http\Requests\LoginAdminsRequest;
 use App\Http\Requests\StoreAdminsRequest;
+use App\Http\Requests\RegisterAdminsRequest;
 
 class AdminsController extends Controller
 {
@@ -41,6 +40,43 @@ class AdminsController extends Controller
         } else {
             return redirect()->route('login')->with('alert', 'Truy cập bị từ chối!!');
         }
+    }
+
+    public function register()
+    {
+        return view('server.register');
+    }
+
+    public function registerHandle(RegisterAdminsRequest $req)
+    {
+        $admins = new Admins();
+
+        $admins->fullname = $req->fullname;
+        $admins->email = $req->email;
+
+        $admins->address = null;
+        $admins->phone_number = null;
+
+        $admins->username = $req->username;
+        $admins->password = Hash::make($req->password);
+
+        $admins->birth_date = null;
+        $admins->salary = null;
+
+        $admins->avatar = null;
+        $admins->roles_id = 1;
+
+        // if (in_array($req->genders_id, [1, 2])) {
+        //     $admins->genders_id = $req->genders_id;
+        // } else {
+        //     $admins->genders_id = 1;
+        // }
+        $admins->genders_id = 1;
+        $admins->status_id = 1;
+
+        $admins->save();
+
+        return redirect()->route('login')->with('alert', 'Tạo tài khoản thành công');
     }
 
     public function logout()

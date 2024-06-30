@@ -11,6 +11,12 @@ class Admins extends Authenticatable
 
     protected $table = 'admins';
 
+    // protected $fillable = [
+    //     'username',
+    //     'email',
+    //     'password',
+    // ];
+
     public function roles()
     {
         return $this->belongsTo(Roles::class);

@@ -14,6 +14,7 @@
     @include('client.layout.footer')
 
     @include('client.designs.master_js')
+
     <div class="btn-social">
         <ul class="ft-menu-cl">
             <li class="menu-click"><i class="fa fa-comments btn" aria-hidden="true"></i>

@@ -27,7 +27,7 @@ return new class extends Migration
             $table->date('birth_date')->nullable();
             $table->string('avatar')->nullable();
 
-            $table->decimal('salary');
+            $table->decimal('salary')->nullable();
             $table->timestamp('login_at');
 
             $table->timestamps();

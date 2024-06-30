@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Server;
 use App\Models\SlideShows;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
 
 class SlideShowsController extends Controller
 {

@@ -14,11 +14,11 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
-                        <form action="{{ route('user_loginHandle') }}" method="POST" class="signin-form">
+                        <form action="" method="POST" class="signin-form">
                             @csrf
                             <div class="form-group">
-                                <input type="text" id="email" name="email" value="{{ old('email') }}"
-                                    class="form-control" placeholder="Email" autofocus>
+                                <input type="text" name="email" value="{{ old('email') }}" class="form-control"
+                                    placeholder="Email" autofocus required>
                             </div>
                             <div class="form-text">
                                 <font style="vertical-align: inherit;">
@@ -29,8 +29,8 @@
                             </div>
 
                             <div class="form-group">
-                                <input type="password" id="password" name="password" value="{{ old('password') }}"
-                                    class="form-control" placeholder="Mật Khẩu">
+                                <input type="password" name="password" value="{{ old('password') }}"
+                                    class="form-control" placeholder="Mật Khẩu" autofocus required>
                                 <span toggle="#password-field"
                                     class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>

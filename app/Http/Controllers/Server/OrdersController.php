@@ -34,12 +34,16 @@ class OrdersController extends Controller
         $keyword = $req->input('data');
 
         if (empty($keyword)) {
-            $listOrders = Orders::all();
+            $listOrders = Orders::whereIn('status_id', [1, 2, 4, 5])->get();
         } else {
-            $userId = Users::where('fullname', 'like', "%$keyword%")->pluck('id')->toArray();
+            $users = Users::where('fullname', 'like', "%$keyword%")
+                ->pluck('id')
+                ->toArray();
 
-            if (!empty($userId)) {
-                $listOrders = Orders::whereIn('users_id', $userId)->get();
+            if (!empty($users)) {
+                $listOrders = Orders::whereIn('users_id', $users)
+                    ->where('status_id', 1)
+                    ->get();
             } else {
                 $listOrders = [];
             }
@@ -65,7 +69,7 @@ class OrdersController extends Controller
         $orders[0]->status_id = $status;
         $orders[0]->save();
 
-        return redirect()->route('server.orders.index')->with('alert', 'Cập nhập status đơn hàng thành công');
+        return redirect()->route('server.orders.index')->with('alert', 'Cập nhập trạng thái đơn hàng thành công');
     }
 
     /**

@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Server;
 
-use App\Models\Purchases;
-use App\Models\PurchaseDetails;
-
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Models\Sizes;
 use App\Models\Colors;
-use App\Models\ProductDetails;
 use App\Models\Products;
 use App\Models\Providers;
-use App\Models\Sizes;
+use App\Models\Purchases;
+use Illuminate\Http\Request;
+use App\Models\ProductDetails;
+use App\Models\PurchaseDetails;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class PurchasesController extends Controller
@@ -39,15 +38,15 @@ class PurchasesController extends Controller
         $keyword = $req->input('data');
 
         if (empty($keyword)) {
-            $listPurchases = Purchases::where('is_deleted', 1)->get();
+            $listPurchases = Purchases::whereIn('status_id', [1, 2])->get();
         } else {
-            $providersIds = Providers::where('name', 'like', "%$keyword%")
+            $providers = Providers::where('name', 'like', "%$keyword%")
                 ->pluck('id')
                 ->toArray();
 
-            if (!empty($providersIds)) {
-                $listPurchases = Purchases::whereIn('providers_id', $providersIds)
-                    ->where('is_deleted', 1)
+            if (!empty($providers)) {
+                $listPurchases = Purchases::whereIn('providers_id', $providers)
+                    ->whereIn('status_id', [1, 2])
                     ->get();
             } else {
                 $listPurchases = [];

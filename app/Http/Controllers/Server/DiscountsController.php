@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Server;
 
 use App\Models\Discounts;
 use Illuminate\Http\Request;
+use App\Models\TypeDiscounts;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreDiscountsRequest;
-use App\Models\TypeDiscounts;
 
 class DiscountsController extends Controller
 {

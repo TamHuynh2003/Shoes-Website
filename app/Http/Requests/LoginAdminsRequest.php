@@ -22,7 +22,7 @@ class LoginAdminsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => 'required|max:255|min:5',
+            'username' => 'required|exists:admins|max:255|min:5',
             'password' => 'required|min:6'
         ];
     }
@@ -40,8 +40,8 @@ class LoginAdminsRequest extends FormRequest
     public function attributes()
     {
         return [
-            'username' => 'Tài khoản',
-            'password' => 'Mật khẩu',
+            'username' => 'tài khoản',
+            'password' => 'mật khẩu',
         ];
     }
 }

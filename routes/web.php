@@ -50,9 +50,11 @@ use App\Http\Controllers\Server\PaymentMethodsController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/dangky', [LoginController::class, 'register'])->name('user_register');
-Route::get('/dangnhap', [LoginController::class, 'login'])->name('user_login');
-Route::post('/dangnhap', [LoginController::class, 'loginHandle'])->name('user_loginHandle');
+// Route::get('/dangky', [LoginController::class, 'register'])->name('register');
+// Route::get('/dangky', [LoginController::class, 'registerHandle']);
+
+// Route::get('/dangnhap', [LoginController::class, 'login'])->name('login');
+// Route::post('/dangnhap', [LoginController::class, 'loginHandle']);
 
 Route::get('/sanpham', [ProductController::class, 'index'])->name('products');
 Route::get('/chitietsanpham/{id}', [ProductController::class, 'show'])->name('products.detail');
@@ -66,6 +68,16 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/lienhe', [ContactController::class, 'index'])->name('contact');
 Route::get('/vechungtoi', [AboutController::class, 'index'])->name('about');
 
+Route::prefix('/', [HomeController::class, 'index'])->group(
+    function () {
+
+        Route::get('/dangky', [UsersController::class, 'register'])->name('user_register');
+        Route::post('/dangky', [UsersController::class, 'registerHandle']);
+
+        Route::get('/dangnhap', [UsersController::class, 'login'])->name('user_login');
+        Route::post('/dangnhap', [UsersController::class, 'loginHandle']);
+    }
+);
 
 
 //Admins Route
@@ -74,14 +86,17 @@ Route::prefix('/admin')->group(function () {
 
     Route::middleware('guest')->group(function () {
 
-        Route::get('/login', [AdminsController::class, 'login'])->name('login');
-        Route::post('/login', [AdminsController::class, 'loginHandle'])->name('loginHandle');
+        Route::get('/dangnhap', [AdminsController::class, 'login'])->name('login');
+        Route::post('/dangnhap', [AdminsController::class, 'loginHandle']);
+
+        Route::get('/dangky', [AdminsController::class, 'register'])->name('register');
+        Route::post('/dangky', [AdminsController::class, 'registerHandle']);
     });
 
     Route::middleware('auth')->group(function () {
 
         Route::get('/', [DashBoardController::class, 'dashboard'])->name('dashboards.index');
-        Route::get('/logout', [AdminsController::class, 'logout'])->name('logout');
+        Route::get('/dangxuat', [AdminsController::class, 'logout'])->name('logout');
 
         //Admins
 

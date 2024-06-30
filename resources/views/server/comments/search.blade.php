@@ -6,8 +6,7 @@
     <td><span>{{ $comments->products->name }}</span></td>
 
     <td><span>{{ $comments->content }}</span></td>
-    {{-- <td><span>{{ $comments->rating }}</span></td> --}}
-    <td>
+    {{-- <td>
         @if($productImage->where('products_id', $products->id)->count() > 0)
         <ul class="users-list m-0 avatar-group d-flex align-items-center">
             @foreach($productImage as $images)
@@ -22,7 +21,7 @@
         @else
         <p>Không có ảnh</p>
         @endif
-    </td>
+    </td> --}}
     <td>
         @if(!empty($comments->rating))
         <ul class=" users-list m-0 avatar-group d-flex align-items-center">
