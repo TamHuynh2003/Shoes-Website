@@ -14,24 +14,43 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
-                        <form action="#" class="signin-form">
+                        <form action="{{ route('user_loginHandle') }}" method="POST" class="signin-form">
+                            @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email" required>
+                                <input type="text" id="email" name="email" value="{{ old('email') }}"
+                                    class="form-control" placeholder="Email" autofocus>
                             </div>
+                            <div class="form-text">
+                                <font style="vertical-align: inherit;">
+                                    @error('email')
+                                    <font style="vertical-align: inherit;color:red">{{ $message }}</font>
+                                    @enderror
+                                </font>
+                            </div>
+
                             <div class="form-group">
-                                <input id="password-field" type="password" class="form-control" placeholder="Mật Khẩu"
-                                    required>
+                                <input type="password" id="password" name="password" value="{{ old('password') }}"
+                                    class="form-control" placeholder="Mật Khẩu">
                                 <span toggle="#password-field"
                                     class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
+                            <div class="form-text">
+                                <font style="vertical-align: inherit;">
+                                    @error('password')
+                                    <font style="vertical-align: inherit;color:red">{{ $message }}</font>
+                                    @enderror
+                                </font>
+                            </div>
+
                             <div class="form-group">
                                 <button type="submit" class="form-control btn btn-primary submit px-3">Đăng
                                     Nhập</button>
                             </div>
+
                             <div class="form-group d-md-flex">
                                 <div class="w-50">
                                     <label class="checkbox-wrap checkbox-primary">
-                                        <a href="{{route('register')}}" style="color: #fff">Đăng Ký</a>
+                                        <a href="{{route('user_register')}}" style="color: #fff">Đăng Ký</a>
                                     </label>
                                 </div>
 
@@ -50,9 +69,7 @@
                         <br />
                         <div class="social d-flex text-center">
                             <a href="{{route('home')}}" class="px-2 py-2 mr-md-1 rounded">
-                                <span class="ion-logo-facebook mr-2">
-                                    Trở Lại
-                                </span>
+                                <span class="ion-logo-facebook mr-2">Trở Lại</span>
                             </a>
                         </div>
                     </div>

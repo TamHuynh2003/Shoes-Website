@@ -156,12 +156,12 @@ class ProductsFactory extends Factory
 
         do {
             $purchasePrice = $this->faker->randomElement($purchasePrices);
-            $possibleSellingPrices = array_filter($sellingPrices, function ($price) use ($purchasePrice) {
+            $prices = array_filter($sellingPrices, function ($price) use ($purchasePrice) {
                 return $price > $purchasePrice + 300000;
             });
-        } while (empty($possibleSellingPrices));
+        } while (empty($prices));
 
-        $sellingPrice = $this->faker->randomElement($possibleSellingPrices);
+        $sellingPrice = $this->faker->randomElement($prices);
 
 
         return [

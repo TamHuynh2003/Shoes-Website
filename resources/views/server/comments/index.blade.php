@@ -21,7 +21,7 @@
                     <a href="{{route('comments.trash')}}" class="btn btn-primary me-2">Thùng Rác</a>
                 </div>
 
-                <div class="input-group input-group-merge w-75">
+                <div class="input-group input-group-merge w-50">
                     <span class="input-group-text"><i class="ti-search"></i></span>
                     <input type="text" id="search" class="form-control" placeholder="Tìm kiếm..."
                         aria-label="Search...">

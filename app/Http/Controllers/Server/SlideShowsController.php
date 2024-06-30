@@ -39,6 +39,7 @@ class SlideShowsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     // public function store(Request $req)
     // {
     //     if ($req->hasFile('images')) {
@@ -58,6 +59,7 @@ class SlideShowsController extends Controller
 
     //     return view('server.slide_shows.search', compact('slideshows'));
     // }
+
     public function store(Request $req)
     {
         $slideshows = new SlideShows();

@@ -2,8 +2,8 @@
 <tr>
     <td><strong>{{ $loop->iteration }}</strong></td>
     <td><span>{{ $products->name }}</span></td>
-    <td><span>{{ $products->purchase_price }}</span></td>
-    <td><span>{{ $products->selling_price }}</span></td>
+    <td><span>{{ number_format($products->purchase_price) }}</span></td>
+    <td><span>{{ number_format($products->selling_price) }}</span></td>
     <td>
         @if($productImage->where('products_id', $products->id)->count() > 0)
         <ul class="users-list m-0 avatar-group d-flex align-items-center">
@@ -17,7 +17,7 @@
             @endforeach
         </ul>
         @else
-        <p>Sản phẩm này không có ảnh</p>
+        <p>Không có ảnh</p>
         @endif
     </td>
     <td>

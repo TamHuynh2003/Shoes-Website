@@ -11,8 +11,8 @@ class ProductImages extends Model
 
     protected $table = 'product_images';
 
-    // public function products()
-    // {
-    //     return $this->belongsTo(Products::class);
-    // }
+    public function products()
+    {
+        return $this->belongsTo(Products::class, 'products_id');
+    }
 }

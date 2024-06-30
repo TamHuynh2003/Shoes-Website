@@ -60,7 +60,7 @@ class UsersFactory extends Factory
             // 'image' => 'https://randomuser.me/api/portraits/men/' . $this->faker->numberBetween(1, 99) . '.jpg',
             //'image' => $imagePath,  // Sử dụng đường dẫn của ảnh ngẫu nhiên
 
-            'password' => Hash::make('111'),
+            'password' => Hash::make('123456'),
             'avatar' => $avatar,
 
             'birth_date' => $this->faker->dateTimeBetween('-60 years', '-18 years')->format('Y-m-d'),

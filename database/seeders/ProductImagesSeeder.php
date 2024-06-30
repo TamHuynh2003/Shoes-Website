@@ -22,7 +22,7 @@ class ProductImagesSeeder extends Seeder
             5 => ['images/products/con1.png', 'images/products/con2.png', 'images/products/con3.png', 'images/products/con4.png', 'images/products/con5.png', 'images/products/con6.png', 'images/products/con7.png', 'images/products/con8.png', 'images/products/con9.png', 'images/products/con10.png'],
         ];
 
-        for ($i = 1; $i <= 20; $i++) {
+        for ($i = 1; $i <= 40; $i++) {
             $products = Products::find($i);
             $categoryId = $products->categories_id;
 

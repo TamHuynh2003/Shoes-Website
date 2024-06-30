@@ -14,22 +14,27 @@
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
-                        <form action="#" class="signin-form">
+                        <form action="{{asset('user_register')}}" method="POST" class="signin-form">
+                            @csrf
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Họ Và Tên" required>
                             </div>
+
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Số Điện Thoại" required>
                             </div>
+
                             <div class="form-group">
                                 <input type="email" class="form-control" placeholder="Email" required>
                             </div>
+
                             <div class="form-group">
                                 <input id="password-field" type="password" class="form-control" placeholder="Mật Khẩu"
                                     required>
                                 <span toggle="#password-field"
                                     class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
+
                             <div class="form-group">
                                 <input id="password-field" type="password" class="form-control"
                                     placeholder="Xác Nhận Lại Mật Khẩu" required>

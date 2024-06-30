@@ -5,6 +5,15 @@
 	</span>
 </div>
 
+<!--SweetAlert-->
+<script src="{{asset('user_template/sweetalert2/sweetalert2.all.min.js')}}"></script>
+
+@if (session('alert'))
+<script>
+	Swal.fire("{{ session('alert') }}")
+</script>
+@endif
+
 {{-- <div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<div class="btn-social">

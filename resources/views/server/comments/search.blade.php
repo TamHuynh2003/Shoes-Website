@@ -7,7 +7,22 @@
 
     <td><span>{{ $comments->content }}</span></td>
     {{-- <td><span>{{ $comments->rating }}</span></td> --}}
-
+    <td>
+        @if($productImage->where('products_id', $products->id)->count() > 0)
+        <ul class="users-list m-0 avatar-group d-flex align-items-center">
+            @foreach($productImage as $images)
+            @if($images->products_id == $products->id)
+            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
+                class="avatar avatar-xs pull-up" title="{{ $products->name }}">
+                <img src="{{ asset($images->url) }}" alt="Avatar" class="rounded-circle">
+            </li>
+            @endif
+            @endforeach
+        </ul>
+        @else
+        <p>Không có ảnh</p>
+        @endif
+    </td>
     <td>
         @if(!empty($comments->rating))
         <ul class=" users-list m-0 avatar-group d-flex align-items-center">

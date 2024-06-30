@@ -3,7 +3,7 @@
     <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$loop->iteration }}</strong></td>
 
     <td>{{ $purchases->purchase_date }}</td>
-    <td>{{ $purchases->total_price }}</td>
+    <td>{{number_format( $purchases->total_price) }}</td>
 
     <td>{{ $purchases->admins->fullname }}</td>
     <td>{{ $purchases->providers->name }}</td>

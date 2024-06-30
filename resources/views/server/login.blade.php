@@ -30,8 +30,8 @@
                                 Đăng Nhập
                             </span>
                             <div class="wrap-input100 validate-input">
-                                <input type="text" for="username" id="username" name="username" class="input100"
-                                    placeholder="Tài khoản" autofocus>
+                                <input type="text" id="username" name="username" value="{{ old('username') }}"
+                                    class="input100" placeholder="Tài khoản" autofocus>
                                 <span class="focus-input100"></span>
                                 <span class="symbol-input100">
                                     <i class="zmdi zmdi-library" aria-hidden="true"></i>
@@ -47,8 +47,8 @@
                             </div>
 
                             <div class="wrap-input100 validate-input">
-                                <input type="password" for="password" id="password" name="password" class="input100"
-                                    placeholder="Mật khẩu">
+                                <input type="password" id="password" name="password" value="{{ old('password') }}"
+                                    class="input100" placeholder="Mật khẩu">
                                 <span class="focus-input100"></span>
                                 <span class="symbol-input100">
                                     <i class="zmdi zmdi-lock" aria-hidden="true"></i>

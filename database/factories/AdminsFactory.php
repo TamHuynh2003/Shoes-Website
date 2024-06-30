@@ -115,7 +115,7 @@ class AdminsFactory extends Factory
             'phone_number' => '09' . $this->faker->numerify('########'),
 
             'username' => $admins[$index]['username'],
-            'password' => Hash::make('111'),
+            'password' => Hash::make('123456'),
 
             'birth_date' => $this->faker->dateTimeBetween('-60 years', '-18 years')->format('Y-m-d'),
             'avatar' => $avatar,

@@ -36,7 +36,7 @@
                 </td>
 
                 <td>{{ $purchaseDetails->products->name }}</td>
-                <td>{{ $purchaseDetails->purchase_price }}</td>
+                <td>{{ number_format($purchaseDetails->purchase_price )}}</td>
 
                 <td>{{ $purchaseDetails->quantity }}</td>
                 <td>{{ $purchaseDetails->colors->name }}</td>

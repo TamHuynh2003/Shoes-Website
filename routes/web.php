@@ -3,30 +3,39 @@
 use Illuminate\Support\Facades\Route;
 
 //Users
-use App\Http\Controllers\Client\BlogController;
-use App\Http\Controllers\Client\CartController;
-use App\Http\Controllers\Client\HomeController;
-use App\Http\Controllers\Client\AboutController;
 use App\Http\Controllers\Client\LoginController;
-use App\Http\Controllers\Server\SizesController;
-use App\Http\Controllers\Server\UsersController;
-use App\Http\Controllers\Server\AdminsController;
-use App\Http\Controllers\Server\ColorsController;
-use App\Http\Controllers\Server\OrdersController;
+use App\Http\Controllers\Client\HomeController;
+
+use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\Client\CheckoutController;
+
+use App\Http\Controllers\Client\BlogController;
+use App\Http\Controllers\Client\ProductController;
+
+use App\Http\Controllers\Client\AboutController;
+use App\Http\Controllers\Client\ContactController;
+use App\Http\Controllers\Client\WishlistController;
+
+
 
 //Admins 
-use App\Http\Controllers\Client\ContactController;
-use App\Http\Controllers\Client\ProductController;
-use App\Http\Controllers\Client\CheckoutController;
-use App\Http\Controllers\Client\RegisterController;
-use App\Http\Controllers\Client\WishlistController;
-use App\Http\Controllers\Server\CommentsController;
-use App\Http\Controllers\Server\ProductsController;
-use App\Http\Controllers\Server\DashBoardController;
-use App\Http\Controllers\Server\DiscountsController;
+use App\Http\Controllers\Server\AdminsController;
+use App\Http\Controllers\Server\UsersController;
 use App\Http\Controllers\Server\ProvidersController;
+
 use App\Http\Controllers\Server\PurchasesController;
+use App\Http\Controllers\Server\OrdersController;
+
+use App\Http\Controllers\Server\SizesController;
+use App\Http\Controllers\Server\ColorsController;
+
+use App\Http\Controllers\Server\ProductsController;
+use App\Http\Controllers\Server\CommentsController;
+use App\Http\Controllers\Server\DashBoardController;
+
+use App\Http\Controllers\Server\DiscountsController;
 use App\Http\Controllers\Server\CategoriesController;
+
 use App\Http\Controllers\Server\SlideShowsController;
 use App\Http\Controllers\Server\PaymentMethodsController;
 
@@ -40,16 +49,23 @@ use App\Http\Controllers\Server\PaymentMethodsController;
 //Users Route
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/dangky', [RegisterController::class, 'index'])->name('register');
-Route::get('/dangnhap', [LoginController::class, 'index'])->name('user_login');
+
+Route::get('/dangky', [LoginController::class, 'register'])->name('user_register');
+Route::get('/dangnhap', [LoginController::class, 'login'])->name('user_login');
+Route::post('/dangnhap', [LoginController::class, 'loginHandle'])->name('user_loginHandle');
+
+Route::get('/sanpham', [ProductController::class, 'index'])->name('products');
+Route::get('/chitietsanpham/{id}', [ProductController::class, 'show'])->name('products.detail');
+
 Route::get('/giohang', [CartController::class, 'index'])->name('cart');
 Route::get('/yeuthich', [WishlistController::class, 'index'])->name('wishlist');
+
 Route::get('/thanhtoan', [CheckoutController::class, 'index'])->name('checkout');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+
 Route::get('/lienhe', [ContactController::class, 'index'])->name('contact');
 Route::get('/vechungtoi', [AboutController::class, 'index'])->name('about');
-Route::get('/sanpham', [ProductController::class, 'index'])->name('products');
-Route::get('/chitietsanpham', [ProductController::class, 'detail'])->name('product_detail');
+
 
 
 //Admins Route

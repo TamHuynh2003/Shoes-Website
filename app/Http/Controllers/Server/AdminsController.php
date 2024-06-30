@@ -3,16 +3,15 @@
 namespace App\Http\Controllers\Server;
 
 use App\Models\Roles;
-
 use App\Models\Admins;
 use App\Models\Genders;
 use App\Models\UserStates;
-
 use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+
 use App\Http\Requests\LoginAdminsRequest;
 use App\Http\Requests\StoreAdminsRequest;
 

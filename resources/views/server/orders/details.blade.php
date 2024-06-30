@@ -38,7 +38,7 @@
                 </td>
 
                 <td>{{ $orderDetails->products->name }}</td>
-                <td>{{ $orderDetails->selling_price }}</td>
+                <td>{{number_format( $orderDetails->selling_price )}}</td>
 
                 <td>{{ $orderDetails->quantity }}</td>
                 <td>{{ $orderDetails->colors->name }}</td>

@@ -30,11 +30,13 @@
 
                     <div class="mb-3">
                         <label class="form-label">Giá Nhập</label>
-                        <input type="text" value="{{ $products->purchase_price }}" readonly class="form-control">
+                        <input type="text" value="{{ number_format($products->purchase_price) }}" readonly
+                            class="form-control">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Giá Bán</label>
-                        <input type="text" value="{{ $products->selling_price }}" readonly class="form-control">
+                        <input type="text" value="{{number_format( $products->selling_price) }}" readonly
+                            class="form-control">
                     </div>
 
                     <div class="mb-3">

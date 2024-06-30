@@ -9,4 +9,6 @@
 
     <link rel="stylesheet" href="{{asset('login_template/css/style.css')}}">
 
+    <!--SweetAlert-->
+    <link rel="stylesheet" href="{{ asset('user_template/sweetalert2/sweetalert2.min.css')}}">
 </head>

@@ -24,7 +24,7 @@
                     <a href="" class="btn btn-primary me-2">View PDF</a>
                 </div>
 
-                <div class="input-group input-group-merge w-75">
+                <div class="input-group input-group-merge w-50">
                     <span class="input-group-text"><i class="ti-search"></i></span>
                     <input type="text" id="search" class="form-control" placeholder="Tìm kiếm..."
                         aria-label="Search...">

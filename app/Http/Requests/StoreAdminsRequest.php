@@ -47,7 +47,7 @@ class StoreAdminsRequest extends FormRequest
             'email' => 'required|email|unique:admins|max:255',
 
             'address' => 'required|string|max:255',
-            'phone_number' => 'required|unique:admins,phone_number|regex:/^0[0-9]{9,10}$/',
+            'phone_number' => 'required|size:10|unique:admins,phone_number|regex:/^0[0-9]{9,10}$/',
 
             'username' => 'required|string|unique:admins,username|max:255|min:5',
             'password' => 'required|string|min:3',

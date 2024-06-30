@@ -217,30 +217,86 @@ class ProductsController extends Controller
         return view('server.products.update', compact('products', 'images', 'listColors', 'listSizes', 'listCategories', 'listProviders', 'is_deleted'));
     }
 
+    // public function update(Request $req, $id)
+    // {
+    //     $products = Products::find($id);
+
+    //     $products->name = $req->name;
+    //     $products->descriptions = $req->descriptions;
+
+    //     $products->purchase_price = $req->purchase_price;
+    //     $products->selling_price = $req->selling_price;
+
+    //     $products->categories_id = $req->categories_id;
+    //     $products->providers_id = $req->providers_id;
+
+    //     $products->is_deleted = $req->is_deleted;
+    //     $products->save();
+
+    //     if ($req->has('delete_images')) {
+
+    //         foreach ($req->delete_images as $imageId) {
+
+    //             $image = ProductImages::find($imageId);
+
+    //             if ($image) {
+
+    //                 Storage::delete($image->url);
+    //                 $image->delete();
+    //             }
+    //         }
+    //     }
+
+    //     if ($req->hasFile('images')) {
+
+    //         $images = $req->file('images');
+
+    //         foreach ($images as $image) {
+    //             $file = new ProductImages();
+
+    //             $imageName = $image->getClientOriginalName();
+    //             $path = $image->storeAs('images/products', $imageName);
+
+    //             $file->url = $path;
+    //             $file->products_id = $products->id;
+
+    //             $file->is_deleted = 1;
+    //             $file->save();
+    //         }
+    //     }
+
+    //     $productDetail = ProductDetails::where('products_id', $products->id)->first();
+
+    //     if (!empty($productDetail)) {
+    //         $productDetail->quantity = 30;
+    //         $productDetail->save();
+    //     } else {
+    //         $productDetail = new ProductDetails();
+    //         $productDetail->products_id = $products->id;
+    //         $productDetail->quantity = 30;
+    //         $productDetail->save();
+    //     }
+
+    //     return redirect()->route('products.index')->with('alert', 'Cập nhật sản phẩm thành công');
+    // }
+
     public function update(Request $req, $id)
     {
         $products = Products::find($id);
 
         $products->name = $req->name;
         $products->descriptions = $req->descriptions;
-
         $products->purchase_price = $req->purchase_price;
         $products->selling_price = $req->selling_price;
-
         $products->categories_id = $req->categories_id;
         $products->providers_id = $req->providers_id;
-
         $products->is_deleted = $req->is_deleted;
         $products->save();
 
         if ($req->has('delete_images')) {
-
             foreach ($req->delete_images as $imageId) {
-
                 $image = ProductImages::find($imageId);
-
                 if ($image) {
-
                     Storage::delete($image->url);
                     $image->delete();
                 }
@@ -248,37 +304,42 @@ class ProductsController extends Controller
         }
 
         if ($req->hasFile('images')) {
-
             $images = $req->file('images');
-
             foreach ($images as $image) {
                 $file = new ProductImages();
-
                 $imageName = $image->getClientOriginalName();
                 $path = $image->storeAs('images/products', $imageName);
-
                 $file->url = $path;
                 $file->products_id = $products->id;
-
                 $file->is_deleted = 1;
                 $file->save();
             }
         }
 
-        $productDetail = ProductDetails::where('products_id', $products->id)->first();
+        // $productDetail = ProductDetails::where('products_id', $products->id)->first();
 
-        if (!empty($productDetail)) {
-            $productDetail->quantity = 30;
-            $productDetail->save();
-        } else {
-            $productDetail = new ProductDetails();
-            $productDetail->products_id = $products->id;
-            $productDetail->quantity = 30;
-            $productDetail->save();
-        }
+        // if (!empty($productDetail)) {
+        //     $productDetail->quantity = 30;
+
+        //     $productDetail->colors_id = $req->colors_id;
+        //     $productDetail->sizes_id = $req->sizes_id;
+
+        //     $productDetail->save();
+        // } else {
+        //     $productDetail = new ProductDetails();
+
+        //     $productDetail->products_id = $products->id;
+        //     $productDetail->quantity = 30;
+
+        //     $productDetail->colors_id = $req->colors_id;
+        //     $productDetail->sizes_id = $req->sizes_id;
+
+        //     $productDetail->save();
+        // }
 
         return redirect()->route('products.index')->with('alert', 'Cập nhật sản phẩm thành công');
     }
+
 
     public function destroy($id)
     {

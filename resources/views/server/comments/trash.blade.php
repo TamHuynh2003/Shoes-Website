@@ -34,7 +34,6 @@
                                 <th>Nội Dung Đánh Giá</th>
                                 <th>Số Sao</th>
                                 <th>Trạng Thái</th>
-                                <th>Chức Năng</th>
                             </tr>
                         </thead>
                         <tbody class="table-body">
